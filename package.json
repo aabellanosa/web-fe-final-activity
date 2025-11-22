@@ -1,0 +1,33 @@
+{
+  "name": "city-explorer",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint --ext .js,.jsx src || true"
+  },
+  "dependencies": {
+    "clsx": "^1.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.0.0",
+    "eslint": "^8.0.0",
+    "eslint-plugin-react": "^7.0.0",
+    "jsdom": "^27.2.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^4.0.0",
+    "vite": "^7.2.4",
+    "vitest": "^4.0.12"
+  }
+}
