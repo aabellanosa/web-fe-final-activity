@@ -19,6 +19,10 @@ export async function handler(event) {
       },
     });
 
+    if (!response.ok) {
+      throw new Error(`Foursquare API error: ${response.status}`);
+    }
+
     const data = await response.json();
 
     return {
