@@ -5,12 +5,14 @@ export async function handler(event) {
   try {
     const params = event.queryStringParameters;
 
-    const lat = params.lat;
-    const lon = params.lon;
+    const lat = parseFloat(params.lat);
+    const lon = parseFloat(params.lon);
     const query = params.query || "";
-    const limit = params.limit || 8;
+    const limit = parseInt(params.limit || 8);
 
-    const url = `https://places-api.foursquare.com/v3/places/search?ll=${lat},${lon}&query=${query}&limit=${limit}`;
+    const ll = `${lat.toFixed(5)},${lon.toFixed(5)}`;
+
+    const url = `https://places-api.foursquare.com/v3/places/search?ll=${ll}&query=${query}&limit=${limit}`;
 
     const response = await fetch(url, {
       headers: {
