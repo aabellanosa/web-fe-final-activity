@@ -5,7 +5,6 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
-  external_node_modules = ["node-fetch"]
 
 [build.environment]
   FOURSQUARE_API_KEY="fsq38bx6lqXZ00AlNTK1Q/ik5YERVkYA/Dg+zHTyu/uoSgo="
