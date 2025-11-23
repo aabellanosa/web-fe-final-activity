@@ -48,14 +48,16 @@ export default function App() {
               lat, 
               lon, 
               kinds: 'interesting_places', 
-              limit: 8 
+              limit: 8,
+              radius: 10000
             });
       // Restaurants: query "restaurant"
           const r = await fetchNearbyPlaces({ 
             lat, 
             lon, 
             kinds: 'restaurants', 
-            limit: 8 
+            limit: 8,
+            radius: 10000 
           });
           setAttractions(a.results || [])
           setRestaurants(r.results || [])

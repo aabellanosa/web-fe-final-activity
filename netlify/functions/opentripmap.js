@@ -2,7 +2,7 @@
 
 export async function handler(event, context) {
   try {
-    const { lat, lon, radius = 5000, kinds = "restaurants", limit = 10 } =
+    const { lat, lon, radius = 10000, kinds = "restaurants", limit = 10 } =
       Object.fromEntries(new URLSearchParams(event.rawQuery || ""));
 
     if (!lat || !lon) {
