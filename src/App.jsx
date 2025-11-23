@@ -5,7 +5,7 @@ import PlacesList from './components/PlacesList'
 import PhotoGallery from './components/PhotoGallery'
 import useDebouncedValue from './hooks/useDebouncedValue'
 import { fetchCurrentWeatherByCity, fetchWeatherByCoords } from './api/openWeather'
-import { fetchNearbyPlaces } from './api/foursquare'
+import { fetchNearbyPlaces } from './api/opentripmap'
 import { fetchPhotos, fetchHero } from './api/unsplash'
 
 const FALLBACK_IMAGE = "./hero_optim.png";
@@ -36,19 +36,27 @@ export default function App() {
     try {
       const w = await fetchCurrentWeatherByCity(city, units)
       setWeather(w)
-      // fetch photos
+      // fetch photos and hero
       fetchPhotos(city, 8).then(setPhotos).catch(() => setPhotos([]))
-
-      // fetch hero image
       fetchHero(city, 1).then(url => setHeroUrl(url));
 
       // fetch nearby places (use coords)
             const lat = w.coord.lat
             const lon = w.coord.lon
       // Attractions: use general query "attraction" or blank to get nearby
-            const a = await fetchNearbyPlaces({ lat, lon, query: 'attraction', limit: 8 })
+            const a = await fetchNearbyPlaces({ 
+              lat, 
+              lon, 
+              kinds: 'interesting_places', 
+              limit: 8 
+            });
       // Restaurants: query "restaurant"
-          const r = await fetchNearbyPlaces({ lat, lon, query: 'restaurant', limit: 8 })
+          const r = await fetchNearbyPlaces({ 
+            lat, 
+            lon, 
+            kinds: 'restaurants', 
+            limit: 8 
+          });
           setAttractions(a.results || [])
           setRestaurants(r.results || [])
     } catch (err) {
